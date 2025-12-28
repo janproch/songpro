@@ -31,6 +31,16 @@
     "typescript": "^5.4.5"
   },
   "contributes": {
+    "commands": [
+      {
+        "command": "songpro.transposeUp",
+        "title": "SongPro: Transpose +1"
+      },
+      {
+        "command": "songpro.transposeDown",
+        "title": "SongPro: Transpose -1"
+      }
+    ],
     "languages": [
       {
         "id": "songpro",

@@ -1,14 +1,42 @@
 import * as vscode from 'vscode';
+import { transposeText } from './chordTools';
 
 export function activate(context: vscode.ExtensionContext) {
     console.log('SongPro extension is now active');
 
-    // Register your commands here
-    // Example:
-    // let disposable = vscode.commands.registerCommand('songpro.exampleCommand', () => {
-    //     vscode.window.showInformationMessage('Hello from SongPro!');
-    // });
-    // context.subscriptions.push(disposable);
+    // Transpose +1 command
+    let transposeUpDisposable = vscode.commands.registerCommand('songpro.transposeUp', () => {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            return;
+        }
+
+        const selection = editor.selection;
+        const text = editor.document.getText(selection);
+        const transposed = transposeText(text, 1);
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, transposed);
+        });
+    });
+
+    // Transpose -1 command
+    let transposeDownDisposable = vscode.commands.registerCommand('songpro.transposeDown', () => {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            return;
+        }
+
+        const selection = editor.selection;
+        const text = editor.document.getText(selection);
+        const transposed = transposeText(text, -1);
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, transposed);
+        });
+    });
+
+    context.subscriptions.push(transposeUpDisposable, transposeDownDisposable);
 }
 
 export function deactivate() {}
