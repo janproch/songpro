@@ -3,6 +3,9 @@
 	"name": "SongPro",
 	"patterns": [
 		{
+			"include": "#headers"
+		},
+		{
 			"include": "#directives"
 		},
 		{
@@ -10,6 +13,20 @@
 		}
 	],
 	"repository": {
+		"headers": {
+			"patterns": [{
+				"name": "markup.heading.songpro",
+				"match": "^(#)(.*)$",
+				"captures": {
+					"1": {
+						"name": "punctuation.definition.heading.songpro"
+					},
+					"2": {
+						"name": "entity.name.section.songpro"
+					}
+				}
+			}]
+		},
 		"directives": {
 			"patterns": [{
 				"name": "meta.directive.songpro",
