@@ -3,6 +3,9 @@
 	"name": "SongPro",
 	"patterns": [
 		{
+			"include": "#delimiter"
+		},
+		{
 			"include": "#headers"
 		},
 		{
@@ -13,6 +16,12 @@
 		}
 	],
 	"repository": {
+		"delimiter": {
+			"patterns": [{
+				"name": "constant.language.delimiter.songpro",
+				"match": "^\\s*---\\s*$"
+			}]
+		},
 		"headers": {
 			"patterns": [{
 				"name": "markup.heading.songpro",
