@@ -36,7 +36,23 @@ export function activate(context: vscode.ExtensionContext) {
         });
     });
 
-    context.subscriptions.push(transposeUpDisposable, transposeDownDisposable);
+    // Convert chords to NNS command
+    let convertToNNSDisposable = vscode.commands.registerCommand('songpro.convertToNNS', () => {
+        const editor = vscode.window.activeTextEditor;
+        if (!editor) {
+            return;
+        }
+
+        const selection = editor.selection;
+        const text = editor.document.getText(selection);
+        const converted = transposeText(text, 0, true);
+
+        editor.edit(editBuilder => {
+            editBuilder.replace(selection, converted);
+        });
+    });
+
+    context.subscriptions.push(transposeUpDisposable, transposeDownDisposable, convertToNNSDisposable);
 }
 
 export function deactivate() {}
