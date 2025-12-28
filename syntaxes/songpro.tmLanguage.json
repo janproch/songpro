@@ -3,29 +3,23 @@
 	"name": "SongPro",
 	"patterns": [
 		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
+			"include": "#chords"
 		}
 	],
 	"repository": {
-		"keywords": {
+		"chords": {
 			"patterns": [{
-				"name": "keyword.control.songpro",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.songpro",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.songpro",
-					"match": "\\\\."
+				"name": "entity.name.tag.chord.songpro",
+				"match": "\\[([^\\]]*)\\]",
+				"captures": {
+					"0": {
+						"name": "entity.name.tag.chord.songpro"
+					},
+					"1": {
+						"name": "string.other.chord-name.songpro"
+					}
 				}
-			]
+			}]
 		}
 	},
 	"scopeName": ".source.songpro"
