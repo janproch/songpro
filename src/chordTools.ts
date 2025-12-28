@@ -182,9 +182,7 @@ export function transposeChordNumberNumber(chord: string, d: number): string {
     if (chord.startsWith(numTone)) {
       const newIndex = (i + 5 * 12 + d) % 12;
       const chordType = chord.substring(numTone.length);
-      // Remove leading colon if present (from conversion)
-      const cleanType = chordType.startsWith(':') ? chordType.substring(1) : chordType;
-      return `${TONE_NUMBER_NAMES[newIndex]}${cleanType}`;
+      return `${TONE_NUMBER_NAMES[newIndex]}${chordType}`;
     }
   }
 
