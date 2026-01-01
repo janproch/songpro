@@ -4,6 +4,10 @@
   "description": "SongPro format support for VS Code",
   "version": "0.0.1",
   "publisher": "songpro",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/songspro/songpro"
+  },
   "engines": {
     "vscode": "^1.107.0"
   },
